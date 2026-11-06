@@ -1,0 +1,180 @@
+/* GENERAL STYLING */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f2ff;
+    color: #292344;
+    line-height: 1.6;
+}
+
+/* HEADER */
+
+header {
+    background: linear-gradient(135deg, #6842d9, #3978e8);
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+header p {
+    margin-bottom: 0;
+    font-size: 17px;
+}
+
+/* NAVIGATION */
+
+nav {
+    background-color: #292344;
+    padding: 16px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #b9a5ff;
+}
+
+/* MAIN CONTENT */
+
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 10px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    color: #6842d9;
+}
+
+/* FORMS */
+
+form {
+    max-width: 450px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #d6d0e8;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+input:focus {
+    outline: 2px solid #6842d9;
+    border-color: transparent;
+}
+
+/* BUTTONS */
+
+button {
+    background-color: #6842d9;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 7px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5030b5;
+}
+
+/* LINKS */
+
+a {
+    color: #6842d9;
+}
+
+nav a {
+    color: white;
+}
+
+/* DASHBOARD TABLE */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+}
+
+th {
+    background-color: #6842d9;
+    color: white;
+    padding: 14px;
+    text-align: left;
+}
+
+td {
+    padding: 14px;
+    border-bottom: 1px solid #e5e1f0;
+}
+
+tbody tr:hover {
+    background-color: #f4f2ff;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #292344;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 27px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 5px 8px;
+    }
+
+    main {
+        margin: 20px 12px;
+        padding: 18px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
