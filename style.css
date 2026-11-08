@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
 /* GENERAL STYLING */
 
 * {
@@ -7,7 +8,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif !important;
     background-color: #f4f2ff;
     color: #292344;
     line-height: 1.6;
@@ -34,11 +35,17 @@ header p {
 
 /* NAVIGATION */
 
-nav {
+
+    nav {
     background-color: #292344;
     padding: 16px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
 }
+
 
 nav a {
     color: white;
@@ -156,6 +163,8 @@ footer {
 
 @media (max-width: 600px) {
 
+
+
     header h1 {
         font-size: 27px;
     }
@@ -177,4 +186,33 @@ footer {
     th, td {
         padding: 8px;
     }
+    /* DASHBOARD GRID */
+
+ .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+ }
+
+ .stat-card {
+    background-color: #f4f2ff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+ }
+
+ .stat-card h3 {
+    color: #6842d9;
+ }
+
+ .stat-card p {
+    font-size: 30px;
+    font-weight: bold;
+ }
+ h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+}
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif !important;
+}
 }

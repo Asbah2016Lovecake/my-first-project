@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | My Job Tracker</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <header>
-        <h1>My Job Tracker</h1>
+        <h1>Carear Compass</h1>
         <p>Your personal job application dashboard.</p>
     </header>
 
@@ -24,10 +27,56 @@
     </nav>
 
     <main>
+        <button id="testButton">Click Me!</button>
+        <div class="stats-grid">
 
+     <div class="stat-card">
+        <h3>Total Applications</h3>
+        <p>12</p>
+     </div>
+
+     <div class="stat-card">
+        <h3>Interviews</h3>
+        <p>3</p>
+     </div>
+
+     <div class="stat-card">
+        <h3>Under Review</h3>
+        <p>5</p>
+     </div>
+
+     <div class="stat-card">
+        <h3>Offers</h3>
+        <p>1</p>
+     </div>
+
+     </div>
         <h2>My Applications</h2>
         <p>Here is an overview of your job applications.</p>
+        <h2>Add a New Application</h2>
 
+    <form id="addApplicationForm">
+
+        <label for="company">Company Name:</label>
+        <input type="text" id="company" required>
+
+        <label for="position">Job Title:</label>
+        <input type="text" id="position" required>
+
+        <label for="date">Application Date:</label>
+        <input type="date" id="date" required>
+
+        <label for="status">Application Status:</label>
+        <select id="status" required>
+        <option value="Applied">Applied</option>
+        <option value="Interview">Interview</option>
+        <option value="Offer">Offer</option>
+        <option value="Rejected">Rejected</option>
+        </select>
+
+        <button type="submit">Add Application</button>
+
+    </form>
         <table border="1">
 
             <thead>
@@ -39,7 +88,7 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="applicationsTableBody">>
                 <tr>
                     <td>Google</td>
                     <td>Software Developer</td>
@@ -69,6 +118,6 @@
     <footer>
         <p>My Job Tracker &copy; 2026</p>
     </footer>
-
+<script src="script.js"></script>
 </body>
 </html>
