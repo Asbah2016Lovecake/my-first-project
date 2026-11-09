@@ -53,6 +53,15 @@
      </div>
         <h2>My Applications</h2>
         <p>Here is an overview of your job applications.</p>
+        <h2>Filter Applications</h2>
+
+        <select id="statusFilter">
+        <option value="All">All Applications</option>
+        <option value="Applied">Applied</option>
+        <option value="Interview">Interview</option>
+            <option value="Offer">Offer</option>
+         <option value="Rejected">Rejected</option>
+        </select>
         <h2>Add a New Application</h2>
 
     <form id="addApplicationForm">
@@ -85,6 +94,7 @@
                     <th>Job Title</th>
                     <th>Application Date</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 

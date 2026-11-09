@@ -144,34 +144,154 @@ if (testButton) {
     console.log("Button not found!");
 }
 // ADD APPLICATION FORM
+// JOB TRACKER APPLICATION
+
 const applicationForm = document.getElementById("addApplicationForm");
 const tableBody = document.getElementById("applicationsTableBody");
+const statusFilter = document.getElementById("statusFilter");
+
+const storageKey = "jobTrackerApplications";
+
+
+// CREATE A TABLE ROW
+
+function createApplicationRow(application) {
+
+    const newRow = document.createElement("tr");
+
+    const companyCell = document.createElement("td");
+    companyCell.textContent = application.company;
+
+    const positionCell = document.createElement("td");
+    positionCell.textContent = application.position;
+
+    const dateCell = document.createElement("td");
+    dateCell.textContent = application.date;
+
+    const statusCell = document.createElement("td");
+    statusCell.textContent = application.status;
+
+    const actionCell = document.createElement("td");
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+
+    deleteButton.addEventListener("click", function() {
+        newRow.remove();
+        saveApplications();
+    });
+
+    actionCell.appendChild(deleteButton);
+
+    newRow.appendChild(companyCell);
+    newRow.appendChild(positionCell);
+    newRow.appendChild(dateCell);
+    newRow.appendChild(statusCell);
+    newRow.appendChild(actionCell);
+
+    return newRow;
+}
+
+
+// SAVE APPLICATIONS
+
+function saveApplications() {
+
+    const rows = tableBody.querySelectorAll("tr");
+
+    const savedApplications = Array.from(rows).map(row => ({
+        company: row.cells[0].textContent,
+        position: row.cells[1].textContent,
+        date: row.cells[2].textContent,
+        status: row.cells[3].textContent
+    }));
+
+    localStorage.setItem(storageKey, JSON.stringify(savedApplications));
+}
+
+
+// LOAD APPLICATIONS
+
+function loadApplications() {
+
+    const savedData = localStorage.getItem(storageKey);
+
+    if (savedData !== null) {
+
+        const savedApplications = JSON.parse(savedData);
+
+        tableBody.innerHTML = "";
+
+        for (let application of savedApplications) {
+            tableBody.appendChild(createApplicationRow(application));
+        }
+
+    } else {
+
+        const existingRows = tableBody.querySelectorAll("tr");
+
+        const initialApplications = Array.from(existingRows).map(row => ({
+            company: row.cells[0].textContent,
+            position: row.cells[1].textContent,
+            date: row.cells[2].textContent,
+            status: row.cells[3].textContent
+        }));
+
+        tableBody.innerHTML = "";
+
+        for (let application of initialApplications) {
+            tableBody.appendChild(createApplicationRow(application));
+        }
+
+        saveApplications();
+    }
+
+}
+
+
+// ADD APPLICATION
 
 applicationForm.addEventListener("submit", function(event) {
 
     event.preventDefault();
 
-    // GET FORM VALUES
-    const company = document.getElementById("company").value;
-    const position = document.getElementById("position").value;
-    const date = document.getElementById("date").value;
-    const status = document.getElementById("status").value;
+    const application = {
+        company: document.getElementById("company").value,
+        position: document.getElementById("position").value,
+        date: document.getElementById("date").value,
+        status: document.getElementById("status").value
+    };
 
-    // CREATE A NEW TABLE ROW
-    const newRow = document.createElement("tr");
+    tableBody.appendChild(createApplicationRow(application));
 
-    // ADD CELLS
-    newRow.innerHTML = `
-        <td>${company}</td>
-        <td>${position}</td>
-        <td>${date}</td>
-        <td>${status}</td>
-    `;
+    saveApplications();
 
-    // ADD ROW TO TABLE
-    tableBody.appendChild(newRow);
-
-    // CLEAR FORM
     applicationForm.reset();
 
 });
+
+
+// FILTER APPLICATIONS
+
+statusFilter.addEventListener("change", function() {
+
+    const rows = tableBody.querySelectorAll("tr");
+
+    for (let row of rows) {
+
+        const status = row.cells[3].textContent;
+
+        if (statusFilter.value === "All" || status === statusFilter.value) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+
+    }
+
+});
+
+
+// START THE APPLICATION
+
+loadApplications();
